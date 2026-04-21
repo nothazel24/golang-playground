@@ -9,12 +9,13 @@ import (
 		POKOKNYA, BEDA FOLDER = WAJIB IMPORT!
 	*/
 	// "belajar-go/exercise" // contoh importing file (namaproject/namapackage)
-	"belajar-go/basic/basic-debugging"
+	"belajar-go/basic/pointer"
 )
 
 func main() {
 	// exercise.ActivateApp() // contoh pengeksekusian (namapackage.MainFunction())
 	// basic.SwitchExample3()
 	// basic.TriangleLoop()
-	basic.IIFEPanic()
+	basic.PointerExample()
+	// exercise.TestOrderManagement()
 }
