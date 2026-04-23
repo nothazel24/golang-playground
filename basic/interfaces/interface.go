@@ -12,6 +12,7 @@ import "fmt"
 	- Suatu struct akan otomatis dianggap sebagai bagian dari interface
   	  jika ia memiliki method yang sesuai dengan kontrak tersebut.
   	  (tanpa perlu keyword seperti "implements" seperti di OOP lain)
+	- Interface digunakan agar suatu function tidak bergantung pada tipe data tertentu (generic)
 
 	Catatan penting:
 	- Interface bukan wadah untuk menyimpan method,
@@ -27,29 +28,26 @@ type HasName interface {
 type Person struct {
 	Name string
 }
+
 /*
+Method ini dimiliki oleh struct Person.
 
-	Method ini dimiliki oleh struct Person.
-
-	Karena method ini sesuai dengan kontrak interface HasName,
-	maka secara otomatis Person dianggap mengimplementasikan HasName.
-
+Karena method ini sesuai dengan kontrak interface HasName,
+maka secara otomatis Person dianggap mengimplementasikan HasName.
 */
 func (n *Person) GetName() string {
 	return n.Name
 }
 
 /*
+Function ini menerima parameter bertipe interface (HasName).
 
-	Function ini menerima parameter bertipe interface (HasName).
+Artinya:
+- Function tidak peduli tipe asli (Person, dll)
+- Selama memiliki method GetName(), maka bisa digunakan
 
-	Artinya:
-	- Function tidak peduli tipe asli (Person, dll)
-	- Selama memiliki method GetName(), maka bisa digunakan
-
-	Di dalam function, kita hanya bisa mengakses method
-	yang didefinisikan di interface.
-
+Di dalam function, kita hanya bisa mengakses method
+yang didefinisikan di interface.
 */
 func SayHello(value HasName) {
 	fmt.Println("Hello,", value.GetName()) // disini wajib untuk memanggil method yang ada di interface
