@@ -2,6 +2,18 @@ package basic
 
 import "fmt"
 
+func random() any {
+	return true
+}
+
+func random2(flag bool) any {
+	if flag {
+		return "Testing test"
+	} else {
+		return 124
+	}
+}
+
 func TestEmptyInterface() {
 	// any / interface{}
 	// digunakan untuk mengampung tipe data apapun didalamnya, contoh ada dibawah
@@ -78,7 +90,7 @@ func TestEmptyInterface() {
 	fmt.Println("==============================")
 
 	// slice yang isiya bisa apa saja
-	var fruits = []any {
+	var fruits = []any{
 		map[string]any{"name": "Strawberry", "total": 10},
 		[]string{"Mango", "Apple", "Papaya", "Watermelon"},
 		"Orange",
@@ -87,8 +99,41 @@ func TestEmptyInterface() {
 	// ini bisa dibuat lebih kompleks lagi untuk memanipulasi data map, slice, dan array didalamnya
 	// untuk mengolah data yang terdapat didalam interface kosong / any
 	// contoh nya seperti kode diatas, yang gunanya untuk mengolah data slice dalam interface kosong
-	
+
 	for _, e := range fruits {
 		fmt.Println(e)
+	}
+
+	fmt.Println("==============================")
+
+	// CASE : Jika terjadi casting dari interface kosong sebanyak 2x
+	// dari function random()
+
+	var result any = random()
+	// var resultString string = result.(string)
+	// fmt.Println(resultString)
+
+	// var resultInt int = result.(int) // panic
+	// fmt.Println(resultInt)
+
+	// solusi biar tidak panic, pake switch type assertion
+	switch value := result.(type) {
+	case string:
+		fmt.Println("String\t:", value)
+	case int:
+		fmt.Println("Integer\t:", value)
+	default:
+		fmt.Println("Unknown")
+	}
+
+	// atau, jika hanya ingin mengambil 1 tipe data saja dalam func any
+	result2 := random2(true)
+
+	// kita coba untuk mengambil tipe data string saja untuk diolah disini
+	str, ok := result2.(string)
+	if ok {
+		fmt.Println(str)
+	} else {
+		fmt.Println("Bukan string")
 	}
 }
