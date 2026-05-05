@@ -16,6 +16,6 @@ func main() {
 	// exercise.ActivateApp() // contoh pengeksekusian (namapackage.MainFunction())
 	// basic.SwitchExample3()
 	// basic.TriangleLoop()
-	basic.TestCustomError()
+	basic.RunErrorWrapping()
 	// exercise.TestOrderManagement()
 }
