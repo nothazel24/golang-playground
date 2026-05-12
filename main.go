@@ -8,14 +8,14 @@ import (
 
 		POKOKNYA, BEDA FOLDER = WAJIB IMPORT!
 	*/
-	// "belajar-go/exercise" // contoh importing file (namaproject/namapackage)
-	"belajar-go/basic/stdlib/strings"
+	"belajar-go/exercise" // contoh importing file (namaproject/namapackage)
+	// "belajar-go/basic/stdlib/strings"
 )
 
 func main() {
 	// exercise.ActivateApp() // contoh pengeksekusian (namapackage.MainFunction())
 	// basic.SwitchExample3()
 	// basic.TriangleLoop()
-	basic.TestStringConversion()
-	// exercise.TestOrderManagement()
+	// basic.TestStringConversion()
+	exercise.ExecLoginSimProgram()
 }
